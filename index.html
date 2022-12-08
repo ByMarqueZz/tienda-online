@@ -25,5 +25,14 @@
             <li><button>Accesorios</button></li>
         </ul>
     </nav>
+    <div id="vistas">
+        <script type="module">
+            import {ViewController} from './controllers/viewController.js';
+            const viewController = new ViewController();
+            console.log(viewController);
+            viewController.cargarVistaHome();
+        </script>
+    </div>
+    
 </body>
 </html>
