@@ -25,6 +25,7 @@ header {
     width: 100px;
     height: 100px;
     margin: 10px;
+    cursor: pointer;
 }
 
 #carroHeader {
@@ -45,4 +46,19 @@ nav ul li button {
     background-color: rgb(225, 181, 181);
     padding: 10px;
     border-radius: 10px;
+}
+
+/* BUTTONS */
+button {
+    cursor: pointer;
+}
+
+/* VISTA HOME */
+.sloganDiv {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.slogan {
+    width: 80%;
 }

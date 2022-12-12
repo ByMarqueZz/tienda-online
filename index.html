@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda on-line</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js"></script>
 </head>
 <body>
     <header>
         <div id="headerLeft">
-            <a href="./index.html"><img src="./img/logo.png" alt="Logo" id="logoHeader"></a>
+            <img src="./img/logo.png" alt="Logo" id="logoHeader">
         </div>
         <div id="headerRigth">
             <a href="#">Login</a>
@@ -26,12 +27,6 @@
         </ul>
     </nav>
     <div id="vistas">
-        <script type="module">
-            import {ViewController} from './controllers/viewController.js';
-            const viewController = new ViewController();
-            console.log(viewController);
-            viewController.cargarVistaHome();
-        </script>
     </div>
     
 </body>
