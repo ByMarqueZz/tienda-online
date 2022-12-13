@@ -4,6 +4,7 @@
     opacity: 1;
 }
 
+
 /* HEADER */
 header {
     display: flex;
@@ -56,11 +57,12 @@ button {
 /* GIF loading */
 #GIF {
     display: none;
-    position: absolute;
+    position: fixed;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
+    top: calc(50% - 25px);
     text-align: center;
 }
 #loadingImg {
