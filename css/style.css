@@ -43,7 +43,7 @@ header {
 #displayCart {
     display: none;
     border: 2px solid black;
-    position: absolute;
+    position: fixed;
     right: 3%;
     top: 8%;
     width: 40%;
@@ -200,6 +200,11 @@ button {
 }
 .btnAddCart {
     height: 50px;
+}
+/* VISTA LOGIN */
+#loginDiv {
+    text-align: center;
+    margin: 10%;
 }
 
 /* FOOTER */

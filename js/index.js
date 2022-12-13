@@ -29,6 +29,13 @@ function addEvent() {
     btnCartDisplay.addEventListener("click", function () {
         displayCart(cart);
     });
+    let btnLogin = document.getElementById("btnLogin");
+    btnLogin.addEventListener("click", function () {
+        if (btnLogin.innerHTML != "Login") {
+            btnLogin.innerHTML = "Login";
+        }
+        viewLogin(store);
+    });
 }
 
 function chargePetition(metodo, store, cart, category="") {
@@ -87,15 +94,37 @@ function loadCart(cart) {
         div.innerHTML = `
             <img src="${products[i].image}" alt="${products[i].title}" class="imgInCart">
             <p>${products[i].title}</p>
-            <p>${(products[i].price * products[i].quantity)}€</p>
-            <p>Cantidad: ${products[i].quantity}</p>
+            <p>${Math.round(((products[i].price * products[i].quantity) * 100)) / 100}€</p>
+            <p>
+                Cantidad: ${products[i].quantity}
+                <button id="btnMas${i}">+</button>
+                <button id="btnMenos${i}">-</button>
+            </p>
             <button id="btnRemove${i}">Eliminar</button>
         `;
         display.appendChild(div);
+        // botones por cada producto
         let btnRemove = document.getElementById("btnRemove"+i);
         btnRemove.addEventListener("click", function () {
             cart.remove(products[i]);
             loadCart(cart);
+        });
+        let btnMas = document.getElementById("btnMas"+i);
+        btnMas.addEventListener("click", function () {
+            cart.items[i].quantity++;
+            localStorage.setItem("cart", JSON.stringify(cart.items));
+            loadCart(cart);
+        });
+        let btnMenos = document.getElementById("btnMenos"+i);
+        btnMenos.addEventListener("click", function () {
+            if(cart.items[i].quantity > 1) {
+                cart.items[i].quantity--;
+                localStorage.setItem("cart", JSON.stringify(cart.items));
+                loadCart(cart);
+            } else {
+                cart.remove(products[i]);
+                loadCart(cart);
+            }
         });
     }
 }
@@ -108,6 +137,24 @@ function animationCart() {
         carro.style.backgroundColor = "white";
         document.getElementById("animationAddCart").style.display = "none";
     }, 1500);
+}
+// LOGIN
+function loginTry(store) {
+    store.getUsers()
+    .then(res=>res.json())
+    .then(json=>{
+        let users = json;
+        let usuario = document.getElementById("usuarioForm").value;
+        let password = document.getElementById("contrasenaForm").value;
+        let user = users.find(user => user.username == usuario && user.password == password);
+        if (user) {
+            localStorage.setItem("user", JSON.stringify(user));
+            viewHome();
+            document.getElementById('btnLogin').innerHTML = "Bienvenido " + user.username;
+        } else {
+            viewLogin(store);
+        }
+    })
 }
 
 // VISTAS
@@ -173,5 +220,24 @@ function viewProducto(product, cart) {
         cart.add(product);
         loadCart(cart);
         animationCart();
+    });
+}
+function viewLogin(store) {
+    let divPrincipal = document.getElementById("vistas");
+    divPrincipal.innerHTML = '';
+    let divLogin = document.createElement("div");
+    divLogin.id = "loginDiv";
+    divLogin.innerHTML = `
+        <h2>LOGIN</h2>
+        <form action="">
+            <input type="text" placeholder="Usuario" id="usuarioForm">
+            <input type="password" placeholder="Contraseña" id="contrasenaForm">
+            <button id="loginForm">Entrar</button>
+        </form>
+    `;
+    divPrincipal.appendChild(divLogin);
+    let loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("click", function () {
+        loginTry(store);
     });
 }

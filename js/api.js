@@ -20,5 +20,8 @@ class Store {
     getAsc(category) {
         return fetch('https://fakestoreapi.com/products/category/'+category+'?sort=asc')
     }
+    getUsers() {
+        return fetch('https://fakestoreapi.com/users')
+    }
 }
 export {Store}

@@ -36,7 +36,8 @@ class Cart {
         let products = JSON.parse(localStorage.getItem("cart"));
         if (products) {
             for (let i=0; i < products.length; i++) {
-                for (let j=0; j < products[i].quantity; j++) {
+                let quantity = products[i].quantity;
+                for (let j=0; j < quantity; j++) {
                     this.add(products[i]);
                 }
 
