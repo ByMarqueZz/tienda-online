@@ -79,10 +79,81 @@ button {
     width: 80%;
 }
 
-/* VISTA MUJER */
+/* VISTA PRODUCTO */
+.buttonFilter {
+    text-align: center;
+    margin: 1%;
+}
 .products {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+    margin-top: 5%;
+}
+.product {
+    font-size: 0.8em;
+    width: 50%;
+    height: 320px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 5%;
+}
+.product:hover {
+    background-color: gainsboro;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.productImgDiv {
+    height: 200px;
+    display: flex;
+    align-items: center;
 }
 .productImg {
-    width: 100px;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/* VISTA PRODUCTO DETALLES */
+.productDetails {
+    margin-top: 10%;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+.divImagenLeft {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+.productImgDetails {
+    max-height: 100%;
+    max-width: 100%;
+    border: 1px solid black;
+    padding: 5%;
+}
+.productInfoDetails {
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.btnAddCart {
+    height: 50px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-evenly;
+}
+footer div h3 {
+    text-align: center;
 }
