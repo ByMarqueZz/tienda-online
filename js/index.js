@@ -127,6 +127,10 @@ function loadCart(cart) {
             }
         });
     }
+    let h2fixed = document.getElementById("h2fixed");
+    h2fixed.addEventListener("click", function () {
+        viewCart(cart);
+    });
 }
 
 function animationCart() {
@@ -240,4 +244,60 @@ function viewLogin(store) {
     loginForm.addEventListener("click", function () {
         loginTry(store);
     });
+}
+
+function viewCart(cart) {
+    let products = cart.getItems();
+    let divPrincipal = document.getElementById("vistas");
+    divPrincipal.innerHTML = '';
+    let divCart = document.createElement("div");
+    divCart.id = "cartDiv";
+    divCart.innerHTML += `<h2>CARRITO</h2>`;
+    let table = document.createElement("table");
+    table.className = "cartTable";
+    for(let i = 0; i < products.length; i++) {
+        table.innerHTML += `
+            <tr>
+                <td class="cartImg"><img src="${products[i].image}" alt="${products[i].title}" class="cartImg"></td>
+                <td class="cartTitle">${products[i].title}</td>
+                <td class="cartPrice">${products[i].price}€</td>
+                <td class="cartQuantity">
+                    Cantidad: ${products[i].quantity}
+                    <button id="btnMasCart${i}">+</button>
+                    <button id="btnMenosCart${i}">-</button>
+                </td>
+                <td class="cartTotal">Total: ${products[i].price * products[i].quantity}€</td>
+                <td class="cartRemove"><button id="btnRemoveCart${i}">Eliminar</button></td>
+            </tr>
+        `;
+    }
+    divCart.appendChild(table);
+    let total = cart.getTotal();
+    divCart.innerHTML += 'Total: ' + total + '€';
+    divPrincipal.appendChild(divCart);   
+    // botones de eliminar y de aumentar y disminuir cantidad
+    for (let i = 0; i < products.length; i++) {
+        let btnRemove = document.getElementById("btnRemoveCart"+i);
+        btnRemove.addEventListener("click", function () {
+            cart.remove(products[i]);
+            viewCart(cart);
+        });
+        let btnMas = document.getElementById("btnMasCart"+i);
+        btnMas.addEventListener("click", function () {
+            cart.items[i].quantity++;
+            localStorage.setItem("cart", JSON.stringify(cart.items));
+            viewCart(cart);
+        });
+        let btnMenos = document.getElementById("btnMenosCart"+i);
+        btnMenos.addEventListener("click", function () {
+            if(cart.items[i].quantity > 1) {
+                cart.items[i].quantity--;
+                localStorage.setItem("cart", JSON.stringify(cart.items));
+                viewCart(cart);
+            } else {
+                cart.remove(products[i]);
+                viewCart(cart);
+            }
+        }); 
+    }
 }

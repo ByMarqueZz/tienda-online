@@ -61,6 +61,7 @@ header {
 }
 #h2fixed {
     position: fixed;
+    cursor: pointer;
 }
 #pfixed {
     position: fixed;
@@ -205,6 +206,24 @@ button {
 #loginDiv {
     text-align: center;
     margin: 10%;
+}
+/* VISTA CART */
+.cartImg {
+    width: 100px;
+    height: 100px;
+    padding: 5%;
+    display: inline-block;
+}
+#cartDiv {
+    text-align: center;
+    margin-top: 5%;
+}
+.cartTable {
+    margin: 0 auto;
+}
+.cartTable tr td{
+    padding: 5%;
+    max-width: 200px;
 }
 
 /* FOOTER */
