@@ -232,12 +232,25 @@ function viewLogin(store) {
     let divLogin = document.createElement("div");
     divLogin.id = "loginDiv";
     divLogin.innerHTML = `
-        <h2>LOGIN</h2>
-        <form action="">
-            <input type="text" placeholder="Usuario" id="usuarioForm">
-            <input type="password" placeholder="Contraseña" id="contrasenaForm">
-            <button id="loginForm">Entrar</button>
-        </form>
+        <div id="mainLogin">
+            <div id="LoginLeft">
+                <h2 id="h2Login">LOGIN</h2>
+                <form action="" id="formLogin">
+                    <input type="text" placeholder="Usuario" id="usuarioForm" class="inputFormLogin">
+                    <input type="password" placeholder="Contraseña" id="contrasenaForm" class="inputFormLogin">
+                    <button id="loginForm">Entrar</button>
+                </form>
+            </div>
+            <div id="LoginRight">
+                <h2 id="h2Login">REGISTRO</h2>
+                <form action="" id="formRegistrer">
+                    <input type="text" placeholder="Usuario" id="usuarioFormRegistro" class="inputFormLogin">
+                    <input type="password" placeholder="Contraseña" id="contrasenaFormRegistro" class="inputFormLogin">
+                    <input type="password" placeholder="Repetir contraseña" id="contrasenaFormRegistro2" class="inputFormLogin">
+                    <button id="registroForm">Registrarse</button>
+                </form>
+            </div>
+        </div>
     `;
     divPrincipal.appendChild(divLogin);
     let loginForm = document.getElementById("loginForm");
