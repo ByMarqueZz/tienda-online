@@ -11,7 +11,7 @@ function addEvent() {
     let store = new Store();
     let cart = new Cart();
     cart.loadtemsForLocalStorage();
-    let logo = document.getElementById("logoHeader");
+    let logo = document.getElementById("headerLeft");
     logo.addEventListener("click", viewHome);
     let btnMujer = document.getElementById("btnMujer");
     btnMujer.addEventListener("click", function () {
@@ -273,7 +273,7 @@ function viewCart(cart) {
     }
     divCart.appendChild(table);
     let total = cart.getTotal();
-    divCart.innerHTML += 'Total: ' + total + '€';
+    divCart.innerHTML += '<p id="totalCart">Total: ' + total + '€</p>';
     divPrincipal.appendChild(divCart);   
     // botones de eliminar y de aumentar y disminuir cantidad
     for (let i = 0; i < products.length; i++) {

@@ -7,10 +7,43 @@
     display: none;
 }
 
+
+body {
+    background-image: url('../img/background.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Comic Sans MS';
+}
+
 /* HEADER */
 header {
     display: flex;
     justify-content: space-between;
+    background-image: url('../img/backgroundHeader.webp');
+}
+
+#headerLeft {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+#headerLeft:hover {
+    transform: scale(1.05);
+    transition: 1s all;
+    background-color: rgb(234, 56, 56);
+}
+
+#headerLeft h1 {
+    text-decoration: none;
+    color: white;
+    text-shadow: 5px 5px 5px black;
+    text-decoration: none;
+    -webkit-text-stroke: 2px black;
+    font-size: 40px;
+    margin: 10px;
 }
 
 #headerRigth {
@@ -29,7 +62,15 @@ header {
     width: 100px;
     height: 100px;
     margin: 10px;
-    cursor: pointer;
+    padding: 1% 0%;
+}
+
+#btnLogin:hover {
+    background-color: rgb(234, 56, 56);
+    padding: 10px;
+    scale: 1.1;
+    border-radius: 10px;
+    transition: 1s;
 }
 
 #carroHeader {
@@ -40,6 +81,13 @@ header {
     transition: 1s all;
     border-radius: 20%;
 }
+
+#carroHeader:hover {
+    transform: scale(1.1);
+    transition: 1s all;
+    background-color: rgb(234, 56, 56);
+}
+
 #displayCart {
     display: none;
     border: 2px solid black;
@@ -54,6 +102,9 @@ header {
     text-align: center;
     padding: 1%;
 }
+#displayCart div:nth-of-type(1) {
+    margin-top: 50%;
+}
 .imgInCart {
     width: 20%;
     height: 20%;
@@ -62,30 +113,93 @@ header {
 #h2fixed {
     position: fixed;
     cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    padding: 1%;
 }
+
+#h2fixed:hover {
+    transform: scale(1.1);
+    transition: 1s all;
+    background-color: rgb(234, 56, 56);
+    
+}
+
 #pfixed {
     position: fixed;
     top: 15%;
     color: red;
+    background-color: white;
 }
 
 /* NAV */
+nav {
+    background-image: url('../img/backgroundHeader.webp');
+    padding-bottom: 1%;
+    padding-top: 1%;
+    border-bottom: 2px solid gray;
+    border-top: 2px solid gray;
+}
+
 nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    list-style: none;
+    justify-items: center;
     list-style: none;
 }
 
 nav ul li button {
     background-color: rgb(225, 181, 181);
+    font-family: 'Comic Sans MS';
+    font-size: 1em;
     padding: 10px;
     border-radius: 10px;
+}
+
+nav ul li button:hover {
+    background-color: rgb(234, 56, 56);
+    padding: 10px;
+    scale: 1.1;
+    border-radius: 10px;
+    transition: 0.5s;
 }
 
 /* BUTTONS */
 button {
     cursor: pointer;
+}
+
+#btnAsc {
+    background-color: rgb(225, 181, 181);
+    font-family: 'Comic Sans MS';
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#btnAsc:hover {
+    background-color: rgb(234, 56, 56);
+    padding: 10px;
+    scale: 1.1;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+#btnDesc {
+    background-color: rgb(225, 181, 181);
+    font-family: 'Comic Sans MS';
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#btnDesc:hover {
+    background-color: rgb(234, 56, 56);
+    padding: 10px;
+    scale: 1.1;
+    border-radius: 10px;
+    transition: 0.5s;
 }
 /* GIF loading */
 #GIF {
@@ -124,6 +238,12 @@ button {
     transition: 1s ease-in-out;
 }
 
+/* vistas */
+#vistas {
+    padding-bottom: 1%;
+    height: 80vh;
+}
+
 /* VISTA HOME */
 .sloganDiv {
     text-align: center;
@@ -131,7 +251,7 @@ button {
 }
 
 .slogan {
-    width: 80%;
+    max-width: 80%;
 }
 
 /* VISTA PRODUCTO */
@@ -157,6 +277,8 @@ button {
     padding-left: 20%;
     padding-right: 20%;
     margin-bottom: 5%;
+    background-color: white;
+    border-radius: 25%;
 }
 .product:hover {
     background-color: gainsboro;
@@ -185,11 +307,11 @@ button {
     width: 80%;
     display: flex;
     justify-content: center;
+    background-color: white;
 }
 .productImgDetails {
     max-height: 100%;
     max-width: 100%;
-    border: 1px solid black;
     padding: 5%;
 }
 .productInfoDetails {
@@ -198,6 +320,7 @@ button {
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+    background-color: white;
 }
 .btnAddCart {
     height: 50px;
@@ -217,6 +340,7 @@ button {
 #cartDiv {
     text-align: center;
     margin-top: 5%;
+    background-color: white;
 }
 .cartTable {
     margin: 0 auto;
@@ -225,13 +349,57 @@ button {
     padding: 5%;
     max-width: 200px;
 }
+#totalCart {
+    color: red;
+}
 
 /* FOOTER */
 footer {
-    margin-top: 10%;
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    background-color: rgb(108, 104, 104);
+    width: 100%;
+    padding-top: 1%;
+    border-top: 2px solid gray;
 }
 footer div h3 {
     text-align: center;
+}
+footer div ul {
+    list-style: none;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1024px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 768px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #headerLeft h1 {
+        font-size: 1em;
+        text-shadow: 5px 5px 5px black;
+        -webkit-text-stroke: 1px black;
+    }
+    #metodosFooter img{
+        width: 100%;
+    }
+    #vistas {
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    .cartTable tr td {
+        padding: 0%;
+    }
+    .divImagenLeft {
+        padding: 0%;
+        max-height: 50%;
+    }
+    .productDetails {
+        align-items: center;
+    }
 }
