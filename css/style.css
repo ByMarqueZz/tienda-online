@@ -239,7 +239,7 @@ button {
 /* vistas */
 #vistas {
     padding-bottom: 1%;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 /* VISTA HOME */

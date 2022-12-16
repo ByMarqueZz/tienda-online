@@ -87,7 +87,7 @@ function displayCart(cart) {
 function loadCart(cart) {
     let products = cart.getItems();
     let display = document.getElementById("displayCart");
-    display.innerHTML = '<h2 id="h2fixed">Tu carrito</h2><p id="pfixed" class="total">Total: '+cart.getTotal()+'€</p>';
+    display.innerHTML = '<p id="h2fixed" class="total">Tu carrito<br>Total: '+cart.getTotal()+'€</p>';
     for (let i = 0; i < products.length; i++) {
         let div = document.createElement("div");
         div.className = "productCart";
