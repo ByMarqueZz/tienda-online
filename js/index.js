@@ -138,10 +138,11 @@ function animationCart() {
     carro.style.backgroundColor = "green";
     document.getElementById("animationAddCart").style.display = "block";
     setTimeout(function () {
-        carro.style.backgroundColor = "white";
+        carro.style.backgroundColor = "transparent";
         document.getElementById("animationAddCart").style.display = "none";
     }, 1500);
 }
+
 // LOGIN
 function loginTry(store) {
     store.getUsers()
