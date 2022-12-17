@@ -266,7 +266,6 @@ button {
 
 .carruselImg {
     max-height: 100%;
-    /* width: 100%; */
 }
 .ulCarrusel {
     list-style: none;
@@ -295,6 +294,37 @@ button {
     font-size: 1em;
     padding: 10px;
     border-radius: 10px;
+}
+
+.divCorreo {
+    margin: 3% 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2%;
+    text-align: center;
+}
+
+#inputCorreo {
+    padding: 1%;
+    border-radius: 1rem;
+    width: 80%;
+}
+
+#buttonCorreo {
+    padding: 1%;
+    border-radius: 1rem;
+    width: 30%;
+    background-color: rgb(225, 181, 181);
+    transition: 1s all;
+}
+
+#buttonCorreo:hover {
+    background-color: red;
+    scale: 1.1;
 }
 
 /* VISTA PRODUCTO */

@@ -179,15 +179,9 @@ function loginTry(store) {
     })
 }
 
-// VISTAS
-function viewHome(products) {
+function addCarrusel(products) {
+    // Añade el carrusel de fotos
     let divPrincipal = document.getElementById("vistas");
-    divPrincipal.innerHTML = `
-        <div class="sloganDiv">
-            <img src="./img/slogan.png" alt="slogan" class="slogan">
-        </div>
-    `;
-    // carrusel
     let divCarrusel = document.createElement('div');
     divCarrusel.className = "divCarrusel";
     let ul = document.createElement('ul');
@@ -215,12 +209,50 @@ function viewHome(products) {
         if (margin > -3500) {
             margin -= 200;
             ul.style.marginLeft = `${margin}px`
+        } else {
+            margin = 10;
+            ul.style.marginLeft = '2%';
         }
     });
+    setInterval(function () {
+        if (margin > -3500) {
+            margin -= 200;
+            ul.style.marginLeft = `${margin}px`
+        } else {
+            margin = 10;
+            ul.style.marginLeft = '2%';
+        }
+    }, 2000)
     ul.appendChild(buttonDer);
     ul.appendChild(buttonIzq);
     divCarrusel.appendChild(ul);
     divPrincipal.appendChild(divCarrusel);
+}
+
+// VISTAS
+function viewHome(products) {
+    let divPrincipal = document.getElementById("vistas");
+    divPrincipal.innerHTML = `
+        <div class="sloganDiv">
+            <img src="./img/slogan.png" alt="slogan" class="slogan">
+        </div>
+    `;
+    // carrusel
+    addCarrusel(products);
+    // añade correo para noticias
+    let divCorreo = document.createElement('div');
+    divCorreo.className = "divCorreo";
+    divCorreo.innerHTML = `
+        <h2>Recibir noticias de productos al correo electrónico</h2>
+        <p>
+            Si deseas recibir noticias de descuentos de ropa o promociones no olvides subscribirte
+            a las noticias que enviamos por correo electrónico cada semana, solo necesitas poner tu correo
+            a continuación y serás notificado por cada descuento de la página
+        </p>
+        <input type="text" placeholder="Correo electrónico aquí" id="inputCorreo">
+        <button id="buttonCorreo">Subscribirse</button>
+    `;
+    divPrincipal.appendChild(divCorreo)
 }
 
 function viewProductos(products, store, cart, category) {
