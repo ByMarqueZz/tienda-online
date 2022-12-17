@@ -1,18 +1,20 @@
 import { Store } from "./api.js";
 import { Cart } from "./cart.js";
+var margin = 10;
 
 window.onload = function () {
-    viewHome();
-    addEvent();
-}
-// FUNCIONES SUELTAS
-function addEvent() {
-    // Añade los eventos a los botones
     let store = new Store();
     let cart = new Cart();
+    chargePetitionForHome(store.getAll, store,)
+    addEvent(store, cart);
+}
+// FUNCIONES SUELTAS
+function addEvent(store, cart) {
     cart.loadtemsForLocalStorage();
     let logo = document.getElementById("headerLeft");
-    logo.addEventListener("click", viewHome);
+    logo.addEventListener("click", function () {
+        chargePetitionForHome(store.getAll, store)
+    });
     let btnMujer = document.getElementById("btnMujer");
     btnMujer.addEventListener("click", function () {
         chargePetition(store.getWomen, store, cart, "women's clothing");
@@ -48,6 +50,21 @@ function chargePetition(metodo, store, cart, category="") {
         store.products = [];
         store.products.push(json);
         viewProductos(store.getProducts(), store, cart, category);
+        document.getElementById("GIF").style.display = "none";
+        document.body.style.opacity = "1";
+    })
+}
+
+function chargePetitionForHome(metodo, store, category="") {
+    /*SE ENCARGA DE LLAMAR UN METODO DE LA API SEGÚN LA VISTA QUE QUIERAS */
+
+    document.getElementById("GIF").style.display = "block";
+    document.body.style.opacity = "0.5";
+    metodo(category).then(res=>res.json())
+    .then(json=>{
+        store.products = [];
+        store.products.push(json);
+        viewHome(store.getProducts());
         document.getElementById("GIF").style.display = "none";
         document.body.style.opacity = "1";
     })
@@ -163,13 +180,47 @@ function loginTry(store) {
 }
 
 // VISTAS
-function viewHome() {
+function viewHome(products) {
     let divPrincipal = document.getElementById("vistas");
     divPrincipal.innerHTML = `
         <div class="sloganDiv">
             <img src="./img/slogan.png" alt="slogan" class="slogan">
         </div>
     `;
+    // carrusel
+    let divCarrusel = document.createElement('div');
+    divCarrusel.className = "divCarrusel";
+    let ul = document.createElement('ul');
+    ul.className = "ulCarrusel"
+    for (let i=0; i < products[0].length; i++) {
+        let li = document.createElement('li');
+        li.innerHTML = `<div class="divImgCarrusel"><img src="${products[0][i].image}" alt="${products[0][i].title}" class="carruselImg"></div>`
+        ul.appendChild(li);
+    }
+    let buttonIzq = document.createElement('button');
+    buttonIzq.className = "btnIzqCarrusel";
+    buttonIzq.innerHTML = "<";
+    buttonIzq.addEventListener('click', function () {
+        if (margin < 10) {
+            margin += 200;
+            ul.style.marginLeft = `${margin}px`
+        } else {
+            ul.style.marginLeft = '2%';
+        }
+    });
+    let buttonDer = document.createElement('button');
+    buttonDer.className = "buttonDerCarrusel";
+    buttonDer.innerHTML = ">";
+    buttonDer.addEventListener('click', function () {
+        if (margin > -3500) {
+            margin -= 200;
+            ul.style.marginLeft = `${margin}px`
+        }
+    });
+    ul.appendChild(buttonDer);
+    ul.appendChild(buttonIzq);
+    divCarrusel.appendChild(ul);
+    divPrincipal.appendChild(divCarrusel);
 }
 
 function viewProductos(products, store, cart, category) {

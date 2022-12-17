@@ -5,9 +5,12 @@ class Store {
     getProducts() {
         return this.products;
     }
+    getAll() {
+        return fetch("https://fakestoreapi.com/products")
+    }
     getWomen() {
         return fetch("https://fakestoreapi.com/products/category/women's clothing")
-        }
+    }
     getMen() {
         return fetch("https://fakestoreapi.com/products/category/men's clothing")
     }
